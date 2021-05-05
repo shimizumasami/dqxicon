@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import SideBar from '../components/sideBar'
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
@@ -10,16 +11,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <nav className={styles.nav}>
-        <ul>
-          <li><a href="/">色</a></li>
-          <li><a href="/">はだ色</a></li>
-          <li><a href="/">りんかく</a></li>
-          <li><a href="/">め</a></li>
-          <li><a href="/">かみがた</a></li>
-        </ul>
-        <button type="button" className={styles.reflect}>反映</button>
-      </nav>
+      <SideBar></SideBar>
 
       <main className={styles.main}>
       </main>
