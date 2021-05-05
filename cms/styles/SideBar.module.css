@@ -13,8 +13,12 @@
   cursor: pointer;
 }
 
-.nav li:hover {
+.nav li.active {
   background-color: #A2D7DD;
+}
+
+.nav li:hover {
+  text-decoration: underline;
 }
 
 .reflect {
