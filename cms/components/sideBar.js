@@ -8,27 +8,27 @@ export default function SideBar(props) {
         <SideBarItem 
           alias="color"
           name="色"
-          active={props.color ? true : false}
+          active={props.active == 'color' ? true : false}
         />
         <SideBarItem 
           alias="skin"
           name="はだ色"
-          active={props.skin ? true : false}
+          active={props.active == 'skin' ? true : false}
         />
         <SideBarItem 
           alias="face"
           name="りんかく"
-          active={props.face ? true : false}
+          active={props.active == 'face' ? true : false}
         />
         <SideBarItem 
           alias="eye"
           name="め"
-          active={props.eye ? true : false}
+          active={props.active == 'eye' ? true : false}
         />
         <SideBarItem 
           alias="hair"
           name="かみがた"
-          active={props.hair ? true : false}
+          active={props.active == 'hair' ? true : false}
         />
       </ul>
       <button type="button" className={styles.reflect}>反映</button>

@@ -1,16 +1,8 @@
-import Head from '../components/head'
-import SideBar from '../components/sideBar'
-import styles from '../styles/Home.module.css'
+import App from '../components/app'
 
 export default function Home() {
   return (
-    <div className={styles.container}>
-      <Head />
-      <SideBar />
-
-      <main className={styles.main}>
-      </main>
-
-    </div>
+    <App>
+    </App>
   )
 }
