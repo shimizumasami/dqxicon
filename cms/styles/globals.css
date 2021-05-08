@@ -19,6 +19,7 @@ a {
 
 button {
   appearance: none;
+  border: none;
   cursor: pointer;
 }
 
