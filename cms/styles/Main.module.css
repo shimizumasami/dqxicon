@@ -1,25 +1,3 @@
-.title_bar {
-  background-color: #A2D7DD;
-  width: 100%;
-}
-
-.title_bar span.title {
-  margin: 10px 20px;
-}
-
-.title_bar button {
-  margin: 5px 0;
-  padding: 5px 12px;
-  border-radius: 4px;
-  background-color: #F3F3F2;
-  color: #3E62AD;
-}
-
-.title_bar button:hover {
-  background-color: #3E62AD;
-  color: #F3F3F2;
-}
-
 table.table {
   width: 100%;
   border-collapse: collapse;

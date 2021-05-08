@@ -1,13 +1,13 @@
 import App from '../components/app'
+import Title from '../components/title'
 import styles from '../styles/Main.module.css'
 
 export default function Color() {
   return (
     <App active="color">
-      <div className={styles.title_bar}>
-        <span className={styles.title}>色</span>
-        <button type="button">追加</button>
-      </div>
+      <Title
+        name="色"
+      />
       <table className={styles.table}>
         <thead>
           <tr>
