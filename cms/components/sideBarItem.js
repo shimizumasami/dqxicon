@@ -3,7 +3,7 @@ import styles from '../styles/SideBar.module.css'
 
 export default function SideBarItem(props) {
   return (
-    <li className={props.active && styles.active}>
+    <li className={props.active ? styles.active : styles.inactive}>
       <Link href={"/" + props.alias}><a>{props.name}</a></Link>
     </li>
   )
