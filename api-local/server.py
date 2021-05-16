@@ -37,5 +37,31 @@ def color():
     response.headers['Content-Type'] = 'application/json'
     return json.dumps(colors)
 
+@get('/skin')
+def skin():
+    colors = [
+        {
+            'order': 1,
+            'code': '#FFFAFC',
+        },
+        {
+            'order': 2,
+            'code': '#FFEDF5',
+        },
+        {
+            'order': 3,
+            'code': '#FADFEA',
+        },
+        {
+            'order': 4,
+            'code': '#F4E4F4',
+        },
+        {
+            'order': 5,
+            'code': '#DBBCDB',
+        }
+    ]
+    response.headers['Content-Type'] = 'application/json'
+    return json.dumps(colors)
 
 run(host='0.0.0.0', port=3001, debug=True, reloader=True)
