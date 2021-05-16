@@ -4,9 +4,18 @@ services:
   node:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: ./docker/node/Dockerfile
     volumes:
       - ./:/usr/src/app
     command: sh -c "cd cms && npm install && npm run dev"
     ports:
       - "3000:3000"
+  api-local:
+    build:
+      context: .
+      dockerfile: ./docker/api-local/Dockerfile
+    volumes:
+      - ./:/usr/src/app
+    command: sh -c "cd api-local && python3 server.py"
+    ports:
+      - "3001:3001"
