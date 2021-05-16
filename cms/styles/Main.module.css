@@ -13,3 +13,19 @@ table.table th,
 table.table td {
   padding: 10px 20px;
 }
+
+button.up,
+button.down,
+button.trash {
+  width: 34px;
+  height: 34px;
+  background-color: #3E62AD;
+  margin-right: 5px;
+  border-radius: 5px;
+}
+
+button.up:hover,
+button.down:hover,
+button.trash:hover {
+  background-color: #4F455C;
+}

@@ -2,6 +2,7 @@ import App from '../components/app'
 import Title from '../components/title'
 import ColorEditor from '../components/colorEditor'
 import styles from '../styles/Main.module.css'
+import Image from 'next/image'
 
 function Color({colors}) {
   return (
@@ -27,9 +28,9 @@ function Color({colors}) {
               <td>{color.code}</td>
               <td>{color.name}</td>
               <td>
-                <button className={styles.up}></button>
-                <button className={styles.down}></button>
-                <button className={styles.trash}></button>
+                <button type="image" className={styles.up}><Image src="/icon_up.svg" alt="up" width={14} height={14}/></button>
+                <button type="image" className={styles.down}><Image src="/icon_down.svg" alt="down" width={14} height={14}/></button>
+                <button type="image" className={styles.trash}><Image src="/icon_trash.svg" alt="move to trash" width={14} height={14}/></button>
               </td>
             </tr>
           ))}
