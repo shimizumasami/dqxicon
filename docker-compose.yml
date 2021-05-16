@@ -1,5 +1,12 @@
 
 version: '3'
+networks:
+  app_net:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.30.0.0/24
 services:
   node:
     build:
@@ -8,6 +15,9 @@ services:
     volumes:
       - ./:/usr/src/app
     command: sh -c "cd cms && npm install && npm run dev"
+    networks:
+      app_net:
+        ipv4_address: 172.30.0.2
     ports:
       - "3000:3000"
   api-local:
@@ -17,5 +27,8 @@ services:
     volumes:
       - ./:/usr/src/app
     command: sh -c "cd api-local && python3 server.py"
+    networks:
+      app_net:
+        ipv4_address: 172.30.0.3
     ports:
       - "3001:3001"
