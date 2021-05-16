@@ -2,7 +2,7 @@ import App from '../components/app'
 import Title from '../components/title'
 import styles from '../styles/Main.module.css'
 
-export default function Color() {
+function Color({colors}) {
   return (
     <App active="color">
       <Title
@@ -19,41 +19,40 @@ export default function Color() {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td><div className={styles.color}></div></td>
-            <td>#FFEA77</td>
-            <td>サンゴールド</td>
-            <td>
-              <button className={styles.up}></button>
-              <button className={styles.down}></button>
-              <button className={styles.trash}></button>
-            </td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td><div className={styles.color}></div></td>
-            <td>#F5FF77</td>
-            <td>レモン</td>
-            <td>
-              <button className={styles.up}></button>
-              <button className={styles.down}></button>
-              <button className={styles.trash}></button>
-            </td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td><div className={styles.color}></div></td>
-            <td>#FFF577</td>
-            <td>カスタード</td>
-            <td>
-              <button className={styles.up}></button>
-              <button className={styles.down}></button>
-              <button className={styles.trash}></button>
-            </td>
-          </tr>
+          {colors.map((color) => (
+            <tr key={color.order}>
+              <td>{color.order}</td>
+              <td><div className={styles.color}></div></td>
+              <td>{color.code}</td>
+              <td>{color.name}</td>
+              <td>
+                <button className={styles.up}></button>
+                <button className={styles.down}></button>
+                <button className={styles.trash}></button>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </App>
   )
 }
+
+export async function getStaticProps(context) {
+  const res = await fetch(`http://172.30.0.3:3001/color`)
+  const data = await res.json()
+
+  if (!data) {
+    return {
+      notFound: true,
+    }
+  }
+
+  return {
+    props: {
+      colors: data
+    },
+  }
+}
+
+export default Color
