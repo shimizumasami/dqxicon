@@ -1,5 +1,6 @@
 import App from '../components/app'
 import Title from '../components/title'
+import ColorEditor from '../components/colorEditor'
 import styles from '../styles/Main.module.css'
 
 function Color({colors}) {
@@ -22,7 +23,7 @@ function Color({colors}) {
           {colors.map((color) => (
             <tr key={color.order}>
               <td>{color.order}</td>
-              <td><div className={styles.color}></div></td>
+              <td><ColorEditor color={color.code}/></td>
               <td>{color.code}</td>
               <td>{color.name}</td>
               <td>
