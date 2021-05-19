@@ -1,5 +1,7 @@
 import App from '../components/app'
 import Title from '../components/title'
+import TableHead from '../components/tableHead'
+import styles from '../styles/Main.module.css'
 
 export default function Eye() {
   return (
@@ -7,6 +9,11 @@ export default function Eye() {
       <Title
         name="め"
       />
+      <table className={styles.table}>
+        <TableHead
+          src={['Order', 'Image line', 'Image mask', 'Action']}
+        />
+      </table>
     </App>
   )
 }

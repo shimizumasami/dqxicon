@@ -1,5 +1,6 @@
 import App from '../components/app'
 import Title from '../components/title'
+import TableHead from '../components/tableHead'
 import ImageEditor from '../components/imageEditor'
 import ImagePreview from '../components/imagePreview'
 import styles from '../styles/Main.module.css'
@@ -11,13 +12,9 @@ export default function Face() {
         name="りんかく"
       />
       <table className={styles.table}>
-        <thead>
-          <tr>
-            <th>Image</th>
-            <th>Image line</th>
-            <th>Image mask</th>
-          </tr>
-        </thead>
+        <TableHead
+          src={['Image', 'Image line', 'Image mask']}
+        />
         <tbody>
           <tr>
           <td>

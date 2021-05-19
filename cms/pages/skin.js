@@ -1,5 +1,6 @@
 import App from '../components/app'
 import Title from '../components/title'
+import TableHead from '../components/tableHead'
 import ColorEditor from '../components/colorEditor'
 import styles from '../styles/Main.module.css'
 import Image from 'next/image'
@@ -11,14 +12,9 @@ function Skin({skins}) {
         name="はだ色"
       />
       <table className={styles.table}>
-        <thead>
-          <tr>
-            <th>Order</th>
-            <th>Color</th>
-            <th>Color code</th>
-            <th>Action</th>
-          </tr>
-        </thead>
+        <TableHead
+          src={['Order', 'Color', 'Color code', 'Action']}
+        />
         <tbody>
           {skins.map((color) => (
             <tr key={color.order}>

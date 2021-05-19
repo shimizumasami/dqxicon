@@ -1,5 +1,6 @@
 import App from '../components/app'
 import Title from '../components/title'
+import TableHead from '../components/tableHead'
 import ColorEditor from '../components/colorEditor'
 import styles from '../styles/Main.module.css'
 import Image from 'next/image'
@@ -11,15 +12,9 @@ function Color({colors}) {
         name="色"
       />
       <table className={styles.table}>
-        <thead>
-          <tr>
-            <th>Order</th>
-            <th>Color</th>
-            <th>Color code</th>
-            <th>Name</th>
-            <th>Action</th>
-          </tr>
-        </thead>
+        <TableHead
+          src={['Order', 'Color', 'Color code', 'Name', 'Action']}
+        />
         <tbody>
           {colors.map((color) => (
             <tr key={color.order}>
