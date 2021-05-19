@@ -1,0 +1,31 @@
+@import 'variables';
+
+table.table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  margin-top: 10px;
+
+   tr {
+    border-bottom: 1px solid $main_color;
+   }
+
+   th,
+   td {
+    padding: 10px 20px;
+   }
+}
+
+button.up,
+button.down,
+button.trash {
+  width: 34px;
+  height: 34px;
+  background-color: $support_color;
+  margin-right: 5px;
+  border-radius: 5px;
+
+  &:hover {
+    background-color: $text_color;
+  }
+}

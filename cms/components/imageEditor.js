@@ -1,4 +1,4 @@
-import styles from '../styles/ImageEditor.module.css'
+import styles from '../styles/ImageEditor.module.scss'
 
 export default function ImageEditor(props) {
   return (

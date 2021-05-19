@@ -1,5 +1,5 @@
 import SideBarItem from './sideBarItem'
-import styles from '../styles/SideBar.module.css'
+import styles from '../styles/SideBar.module.scss'
 
 export default function SideBar(props) {
   return (

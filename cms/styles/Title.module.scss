@@ -1,0 +1,23 @@
+@import 'variables';
+
+.title_bar {
+  background-color: $main_color;
+  width: 100%;
+
+  span.title {
+    margin: 10px 20px;
+  }
+
+  button {
+    margin: 5px 0;
+    padding: 5px 12px;
+    border-radius: 4px;
+    background-color: $base_color;
+    color: $support_color;
+
+    &:hover {
+      background-color: $support_color;
+      color: $base_color;
+    }
+  }
+}

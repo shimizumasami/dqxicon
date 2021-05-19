@@ -1,0 +1,36 @@
+@import 'variables';
+
+.nav {
+  background-color: $base_color;
+  width: 200px;
+
+  ul {
+    margin: 40px 0 0;
+    padding: 0;
+  }
+
+  li {
+    padding: 10px 40px;
+    cursor: pointer;
+
+    &.active {
+      background-color: $main_color;
+    }
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.reflect {
+  background-color: $accent_color;
+  width: 100%;
+  padding: 10px;
+  margin-top: 30px;
+  color: $base_color;
+
+  &:hover {
+    background-color: $text_color;
+  }
+}

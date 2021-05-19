@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import styles from '../styles/SideBar.module.css'
+import styles from '../styles/SideBar.module.scss'
 
 export default function SideBarItem(props) {
   return (

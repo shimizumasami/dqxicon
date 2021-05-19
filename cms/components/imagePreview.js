@@ -1,4 +1,4 @@
-import styles from '../styles/ImagePreview.module.css'
+import styles from '../styles/ImagePreview.module.scss'
 
 export default function ImagePreview(props) {
   return (

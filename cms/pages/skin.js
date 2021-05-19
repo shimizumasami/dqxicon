@@ -2,7 +2,7 @@ import App from '../components/app'
 import Title from '../components/title'
 import TableHead from '../components/tableHead'
 import ColorEditor from '../components/colorEditor'
-import styles from '../styles/Main.module.css'
+import styles from '../styles/Main.module.scss'
 import Image from 'next/image'
 
 function Skin({skins}) {
