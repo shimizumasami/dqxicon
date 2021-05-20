@@ -2,7 +2,7 @@ import App from '../components/app'
 import Title from '../components/title'
 import TableHead from '../components/tableHead'
 import ImageEditor from '../components/imageEditor'
-import ImagePreview from '../components/imagePreview'
+import ImageViewer from '../components/imageViewer'
 import styles from '../styles/Main.module.scss'
 
 export default function Face() {
@@ -18,7 +18,7 @@ export default function Face() {
         <tbody>
           <tr>
           <td>
-              <ImagePreview
+              <ImageViewer
                 src={["/storage/face_mask.png", "/storage/face_line.png"]}
                 alt="りんかく"
               />
