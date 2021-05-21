@@ -17,7 +17,7 @@ export default function Face() {
         />
         <tbody>
           <tr>
-          <td>
+            <td>
               <ImageViewer
                 src={["/storage/face_mask.png", "/storage/face_line.png"]}
                 alt="りんかく"
@@ -26,7 +26,7 @@ export default function Face() {
             <td>
               <ImageEditor
                 src="/storage/face_line.png"
-                alt="りんかく線"
+                alt="りんかく 線"
               />
             </td>
             <td>
