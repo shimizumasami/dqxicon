@@ -3,7 +3,6 @@ import SaveButton from '../components/saveButton'
 import CancelButton from '../components/cancelButton'
 import Image from 'next/image'
 import styles from '../styles/ActionButtons.module.scss'
-import React from 'react'
 
 function ActionButtons(props) {
   let editButton = null;

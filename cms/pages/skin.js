@@ -23,7 +23,7 @@ function Skin({skins}) {
 }
 
 export async function getStaticProps(context) {
-  const res = await fetch(`http://172.30.0.3:3001/skin`)
+  const res = await fetch(process.env.apiEndpoint + '/skin')
   const data = await res.json()
 
   if (!data) {
