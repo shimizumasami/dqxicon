@@ -31,6 +31,6 @@
   color: $base_color;
 
   &:hover {
-    background-color: $text_color;
+    background-color: rgba($color: $accent_color, $alpha: .6);
   }
 }

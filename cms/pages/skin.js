@@ -1,31 +1,20 @@
 import App from '../components/app'
 import Title from '../components/title'
 import TableHead from '../components/tableHead'
-import ColorEditor from '../components/colorEditor'
-import ActionButtons from '../components/actionButtons'
+import SkinColumn from '../components/skinColumn'
 import styles from '../styles/Main.module.scss'
-import Image from 'next/image'
 
 function Skin({skins}) {
   return (
     <App active="skin">
-      <Title
-        name="はだ色"
-      />
+      <Title name="はだ色" />
       <table className={styles.table}>
         <TableHead
           src={['Order', 'Color', 'Color code', 'Action']}
         />
         <tbody>
-          {skins.map((color) => (
-            <tr key={color.order}>
-              <td>{color.order}</td>
-              <td><ColorEditor color={color.code}/></td>
-              <td>{color.code}</td>
-              <td>
-                <ActionButtons />
-              </td>
-            </tr>
+          {skins.map((value) => (
+            <SkinColumn value={value} key={value.order} />
           ))}
         </tbody>
       </table>

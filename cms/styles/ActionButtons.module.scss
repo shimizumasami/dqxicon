@@ -1,6 +1,13 @@
 @import 'variables';
 
+.action_buttons {
+  white-space: nowrap;
+  display: inline-block;
+}
+
 button.edit,
+button.save,
+button.cancel,
 button.up,
 button.down,
 button.trash {
@@ -11,6 +18,22 @@ button.trash {
   border-radius: 5px;
 
   &:hover {
-    background-color: $text_color;
+    background-color: rgba($color: $support_color, $alpha: .6);
+  }
+}
+
+button.save {
+  background-color: $safety_color;
+
+  &:hover {
+    background-color: rgba($color: $safety_color, $alpha: .6);
+  }
+}
+
+button.cancel {
+  background-color: $danger_color;
+
+  &:hover {
+    background-color: rgba($color: $danger_color, $alpha: .6);
   }
 }

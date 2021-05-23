@@ -1,31 +1,20 @@
 import App from '../components/app'
 import Title from '../components/title'
 import TableHead from '../components/tableHead'
-import ColorEditor from '../components/colorEditor'
-import ActionButtons from '../components/actionButtons'
+import ColorColumn from '../components/colorColumn'
 import styles from '../styles/Main.module.scss'
 
 function Color({colors}) {
   return (
     <App active="color">
-      <Title
-        name="色"
-      />
+      <Title name="色" />
       <table className={styles.table}>
         <TableHead
           src={['Order', 'Color', 'Color code', 'Name', 'Action']}
         />
         <tbody>
-          {colors.map((color) => (
-            <tr key={color.order}>
-              <td>{color.order}</td>
-              <td><ColorEditor color={color.code}/></td>
-              <td>{color.code}</td>
-              <td>{color.name}</td>
-              <td>
-                <ActionButtons />
-              </td>
-            </tr>
+          {colors.map((value) => (
+            <ColorColumn value={value} key={value.order} />
           ))}
         </tbody>
       </table>

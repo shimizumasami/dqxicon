@@ -12,12 +12,11 @@
     margin: 5px 0;
     padding: 5px 12px;
     border-radius: 4px;
-    background-color: $base_color;
-    color: $support_color;
+    background-color: $support_color;
+    color: $base_color;
 
     &:hover {
-      background-color: $text_color;
-      color: $base_color;
+      background-color: rgba($color: $support_color, $alpha: .6);
     }
   }
 }

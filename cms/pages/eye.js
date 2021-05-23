@@ -4,43 +4,40 @@ import TableHead from '../components/tableHead'
 import ImageEditor from '../components/imageEditor'
 import ImageViewer from '../components/imageViewer'
 import ActionButtons from '../components/actionButtons'
-import Image from 'next/image'
 import styles from '../styles/Main.module.scss'
 
 function Eye({eyes}) {
   return (
     <App active="eye">
-      <Title
-        name="め"
-      />
+      <Title name="め" />
       <table className={styles.table}>
         <TableHead
           src={['Order', 'Image', 'Image line', 'Image mask', 'Action']}
         />
         <tbody>
-          {eyes.map((eye) => (
-            <tr key={eye.order}>
-              <td>{eye.order}</td>
+          {eyes.map((value) => (
+            <tr key={value.order}>
+              <td>{value.order}</td>
               <td>
                 <ImageViewer
-                  src={["/storage/face_mask.png", "/storage/face_line.png", eye.mask, eye.line]}
+                  src={["/storage/face_mask.png", "/storage/face_line.png", value.mask, value.line]}
                   alt="め"
                 />
               </td>
               <td>
                 <ImageEditor
-                  src={eye.line}
+                  src={value.line}
                   alt="め 線"
                 />
               </td>
               <td>
                 <ImageEditor
-                  src={eye.mask}
+                  src={value.mask}
                   alt="め マスク"
                 />
               </td>
               <td>
-                <ActionButtons />
+                <ActionButtons useEdit={false} />
               </td>
             </tr>
           ))}
