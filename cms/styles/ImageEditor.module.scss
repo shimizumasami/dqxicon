@@ -1,7 +1,39 @@
 @import 'variables';
 
-.editor {
+.container {
+  position: relative;
   width: 100px;
   height: 100px;
   border: 1px solid $main_color;
+  cursor: pointer;
+}
+
+.editor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 100px;
+}
+
+.cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 100px;
+  background-color: $support_color;
+  opacity: 0;
+
+  &:hover {
+    opacity: .7;
+  }
+
+  .edit {
+    position: absolute;
+    top: 38px;
+    left: 38px;
+    width: 24px;
+    height: 24px;
+  }
 }
