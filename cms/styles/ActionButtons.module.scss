@@ -1,0 +1,16 @@
+@import 'variables';
+
+button.edit,
+button.up,
+button.down,
+button.trash {
+  width: 34px;
+  height: 34px;
+  background-color: $support_color;
+  margin-right: 5px;
+  border-radius: 5px;
+
+  &:hover {
+    background-color: $text_color;
+  }
+}
