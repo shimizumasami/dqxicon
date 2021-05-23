@@ -16,7 +16,7 @@
     color: $base_color;
 
     &:hover {
-      background-color: rgba($color: $support_color, $alpha: .6);
+      filter: brightness(70%);
     }
   }
 }

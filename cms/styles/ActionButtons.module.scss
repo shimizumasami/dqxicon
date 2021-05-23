@@ -18,22 +18,14 @@ button.trash {
   border-radius: 5px;
 
   &:hover {
-    background-color: rgba($color: $support_color, $alpha: .6);
+    filter: brightness(70%);
   }
 }
 
 button.save {
   background-color: $safety_color;
-
-  &:hover {
-    background-color: rgba($color: $safety_color, $alpha: .6);
-  }
 }
 
 button.cancel {
   background-color: $danger_color;
-
-  &:hover {
-    background-color: rgba($color: $danger_color, $alpha: .6);
-  }
 }
