@@ -1,6 +1,7 @@
 import ColorEditor from '../components/colorEditor'
 import ActionButtons from '../components/actionButtons'
-import react from "react"
+import react from 'react'
+import axios from 'axios'
 
 class ColorColumn extends react.Component {
   constructor(props) {
@@ -15,6 +16,11 @@ class ColorColumn extends react.Component {
   }
   handleEditSave() {
     this.setState({isEdit: false})
+    const data = {name: 'サンゴールド2'}
+    axios.post(`http://localhost:3001/color`, data)
+      .then(res => {
+        console.log(res.data);
+      })
   }
   handleEditCancel() {
     this.setState({isEdit: false})
