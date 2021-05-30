@@ -14,7 +14,7 @@ function Color({colors}) {
         />
         <tbody>
           {colors.map((value) => (
-            <ColorColumn value={value} key={value.order} />
+            <ColorColumn value={value} key={value.id} />
           ))}
         </tbody>
       </table>

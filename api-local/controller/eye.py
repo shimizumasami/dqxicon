@@ -1,7 +1,8 @@
 from bottle import response
+from controller.base import Base
 import json
 
-class Eye:
+class Eye(Base):
     def index(self):
         eyes = [
             {
