@@ -8,41 +8,78 @@ class ColorColumn extends react.Component {
     super(props)
     this.state = {
       isEdit: false,
+      code: Array(2).fill(props.value.code),
+      name: Array(2).fill(props.value.name),
     }
+    this.handleChangeCode = this.handleChangeCode.bind(this)
+    this.handleChangeName = this.handleChangeName.bind(this)
+  }
+
+  handleChangeCode(event) {
+    const code = this.state.code.slice()
+    code[1] = event.target.value
+    this.setState({code: code})
+  }
+  handleChangeName(event) {
+    const name = this.state.name.slice()
+    name[1] = event.target.value
+    this.setState({name: name})
   }
 
   handleEdit() {
     this.setState({isEdit: true})
   }
   handleEditSave() {
-    this.setState({isEdit: false})
-    const data = {name: 'サンゴールド2'}
-    axios.post(`http://localhost:3001/color`, data)
+    const code = this.state.code.slice()
+    const name = this.state.name.slice()
+    code[0] = code[1]
+    name[0] = name[1]
+    this.setState({
+      isEdit: false,
+      code: code,
+      name: name,
+    })
+    const data = {
+      code: code[1],
+      name: name[1],
+    }
+    axios.post(process.env.apiEndpointOuter + '/color', data)
       .then(res => {
-        console.log(res.data);
+        console.log(res.data)
+      })
+      .catch(res => {
+        console.log(res.data)
       })
   }
   handleEditCancel() {
-    this.setState({isEdit: false})
+    const code = this.state.code.slice()
+    const name = this.state.name.slice()
+    code[1] = code[0]
+    name[1] = name[0]
+    this.setState({
+      isEdit: false,
+      code: code,
+      name: name,
+    })
   }
 
   render() {
     return (
       <tr>
         <td>{this.props.value.order}</td>
-        <td><ColorEditor color={this.props.value.code}/></td>
+        <td><ColorEditor color={this.state.code[1]}/></td>
         <td>
           {
             this.state.isEdit ? 
-            <input type="text" defaultValue={this.props.value.code} /> :
-            this.props.value.code
+            <input type="text" value={this.state.code[1]} onChange={this.handleChangeCode} /> :
+            this.state.code[0]
           }
         </td>
         <td>
           {
             this.state.isEdit ?
-            <input type="text" defaultValue={this.props.value.name} /> :
-            this.props.value.name
+            <input type="text" value={this.state.name[1]} onChange={this.handleChangeName} /> :
+            this.state.name[0]
           }
         </td>
         <td>
