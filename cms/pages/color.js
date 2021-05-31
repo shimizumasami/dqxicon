@@ -23,7 +23,7 @@ function Color({colors}) {
 }
 
 export async function getStaticProps(context) {
-  const res = await fetch(process.env.apiEndpoint + '/color')
+  const res = await fetch(process.env.apiEndpointInner + '/color')
   const data = await res.json()
 
   if (!data) {

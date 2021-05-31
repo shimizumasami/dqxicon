@@ -48,7 +48,7 @@ function Eye({eyes}) {
 }
 
 export async function getStaticProps(context) {
-  const res = await fetch(process.env.apiEndpoint + '/eye')
+  const res = await fetch(process.env.apiEndpointInner + '/eye')
   const data = await res.json()
 
   if (!data) {
