@@ -7,11 +7,11 @@ import styles from '../styles/ActionButtons.module.scss'
 function ActionButtons(props) {
   let editButton = null;
   if (props.useEdit) {
-    if (props.isEdit) {
+    if (props.isEditing) {
       editButton = (
         <span>
-          <SaveButton onClick={() => props.onEditSave()} />
-          <CancelButton onClick={() => props.onEditCancel()} />
+          <SaveButton onClick={() => props.onSave()} />
+          <CancelButton onClick={() => props.onCancel()} />
         </span>
       )
     } else {

@@ -6,18 +6,18 @@ class SkinColumn extends react.Component {
   constructor(props) {
     super(props)
     this.state = {
-      isEdit: false,
+      isEditing: false,
     }
   }
 
   handleEdit() {
-    this.setState({isEdit: true})
+    this.setState({isEditing: true})
   }
-  handleEditSave() {
-    this.setState({isEdit: false})
+  handleSave() {
+    this.setState({isEditing: false})
   }
-  handleEditCancel() {
-    this.setState({isEdit: false})
+  handleCancel() {
+    this.setState({isEditing: false})
   }
 
   render() {
@@ -27,7 +27,7 @@ class SkinColumn extends react.Component {
         <td><ColorEditor color={this.props.value.code}/></td>
         <td>
           {
-            this.state.isEdit ?
+            this.state.isEditing ?
             <input type="text" defaultValue={this.props.value.code} /> :
             this.props.value.code
           }
@@ -35,9 +35,9 @@ class SkinColumn extends react.Component {
         <td>
           <ActionButtons
             onEdit={() => {this.handleEdit()}}
-            onEditSave={() => {this.handleEditSave()}}
-            onEditCancel={() => {this.handleEditCancel()}}
-            isEdit={this.state.isEdit}
+            onSave={() => {this.handleSave()}}
+            onCancel={() => {this.handleCancel()}}
+            isEditing={this.state.isEditing}
           />
         </td>
       </tr>
