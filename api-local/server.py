@@ -1,8 +1,8 @@
 from bottle import run, get, post, route, response, request
 import json
-from controller.color import Color
-from controller.skin import Skin
-from controller.eye import Eye
+from controller.color import ColorController
+from controller.skin import SkinController
+from controller.eye import EyeController
 
 @get('/')
 def hello():
@@ -10,17 +10,17 @@ def hello():
 
 @get('/color')
 def color_index():
-    color = Color()
+    color = ColorController()
     return color.index()
 
 @route('/color', method=['POST', 'OPTIONS'])
 def color_create():
-    color = Color()
+    color = ColorController()
     return color.create(request)
 
 @route('/color/<id:int>', method=['PUT', 'OPTIONS'])
 def color_edit(id):
-    color = Color()
+    color = ColorController()
     return color.edit(request, id)
 
 @get('/skin')

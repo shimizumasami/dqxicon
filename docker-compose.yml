@@ -33,14 +33,16 @@ services:
     ports:
       - "3001:3001"
   db:
-    command: "-jar DynamoDBLocal.jar -sharedDb -optimizeDbBeforeStartup -dbPath ./data"
     image: "amazon/dynamodb-local:latest"
-    container_name: db
-    ports:
-      - "8000:8000"
     volumes:
       - db_data:/home/dynamodblocal/data
+    command: "-jar DynamoDBLocal.jar -sharedDb -optimizeDbBeforeStartup -dbPath ./data"
     working_dir: /home/dynamodblocal
-
+    networks:
+      app_net:
+        ipv4_address: 172.30.0.4
+    ports:
+      - "8000:8000"
+    
 volumes:
   db_data:

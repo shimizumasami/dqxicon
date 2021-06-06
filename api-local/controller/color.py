@@ -1,8 +1,9 @@
 from bottle import response
 from controller.base import Controller
-import json
+from model.color import ColorModel
+import json, logging
 
-class Color(Controller):
+class ColorController(Controller):
     def index(self):
         colors = [
             {
@@ -39,7 +40,23 @@ class Color(Controller):
         return self.response(colors)
 
     def create(self, request):
-        return self.response({'msg': 'create color'})
+        if request.method != 'POST':
+            return self.response({'msg': 'create color from not post'})
+
+        if not request.json or not 'order' in request.json or not 'code' in request.json or not 'code' in request.json:
+            logging.error('[%s] request json: %s', __name__, request.json)
+            return self.response({'msg': 'create color unexpected params'})
+
+        color = ColorModel(None, request.json['order'], request.json['code'], request.json['name'])
+        color.save()
+
+        return self.response({
+            'data': {
+                'order': request.json['order'],
+                'code': request.json['code'],
+                'name': request.json['name'],
+            }
+        })
 
     def edit(self, request, id):
         return self.response({'msg': 'edit color'})
