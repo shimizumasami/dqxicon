@@ -1,8 +1,8 @@
 from bottle import response
-from controller.base import Base
+from controller.base import Controller
 import json
 
-class Skin(Base):
+class Skin(Controller):
     def index(self):
         skins = [
             {

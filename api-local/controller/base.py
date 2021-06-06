@@ -2,7 +2,7 @@ from bottle import HTTPResponse
 from datetime import datetime, timedelta, timezone
 import logging, inspect, os, json
 
-class Base:
+class Controller:
     def __init__(self):
         self.called = inspect.stack()[1].function
         self.jst = timezone(timedelta(hours=+9), 'JST')

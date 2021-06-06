@@ -1,8 +1,8 @@
 from bottle import response
-from controller.base import Base
+from controller.base import Controller
 import json
 
-class Color(Base):
+class Color(Controller):
     def index(self):
         colors = [
             {
