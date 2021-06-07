@@ -25,7 +25,7 @@ class ColorModel(Model):
                 }],
                 AttributeDefinitions=[{
                     'AttributeName': 'id',
-                    'AttributeType': 'N',
+                    'AttributeType': 'S',
                 }, {
                     'AttributeName': 'order',
                     'AttributeType': 'N',
@@ -37,4 +37,14 @@ class ColorModel(Model):
             )
 
     def save(self):
-        return True
+        id = self.create_id() if self.id is None else self.id
+
+        return self.dynamodb.put_item(
+            TableName='Colors',
+            Item={
+                'id':    {'S': id},
+                'order': {'N': str(self.order)},
+                'code':  {'S': self.code},
+                'name':  {'S': self.name},
+            }
+        )
