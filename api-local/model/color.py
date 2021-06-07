@@ -37,14 +37,28 @@ class ColorModel(Model):
             )
 
     def save(self):
-        id = self.create_id() if self.id is None else self.id
-
-        return self.dynamodb.put_item(
-            TableName='Colors',
-            Item={
-                'id':    {'S': id},
-                'order': {'N': str(self.order)},
-                'code':  {'S': self.code},
-                'name':  {'S': self.name},
-            }
-        )
+        if self.id is None:
+            # 新規作成
+            self.id = self.create_id()
+            return self.dynamodb.put_item(
+                TableName='Colors',
+                Item={
+                    'id'   : {'S': self.id},
+                    'order': {'N': str(self.order)},
+                    'code' : {'S': self.code},
+                    'name' : {'S': self.name},
+                }
+            )
+        else:
+            # 編集
+            return self.dynamodb.update_item(
+                TableName='Colors',
+                Key={
+                    'id'   : {'S': self.id},
+                    'order': {'N': str(self.order)},
+                },
+                AttributeUpdates={
+                    'code' : {'Value': {'S': self.code}},
+                    'name' : {'Value': {'S': self.name}},
+                }
+            )

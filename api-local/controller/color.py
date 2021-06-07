@@ -41,22 +41,40 @@ class ColorController(Controller):
 
     def create(self, request):
         if request.method != 'POST':
-            return self.response({'msg': 'create color from not post'})
+            return self.response({'msg': 'create color called from other than POST'})
 
         if not request.json or not 'order' in request.json or not 'code' in request.json or not 'code' in request.json:
             logging.error('[%s] request json: %s', __name__, request.json)
-            return self.response({'msg': 'create color unexpected params'})
+            return self.response({'msg': 'create color received unexpected params'})
 
         color = ColorModel(None, request.json['order'], request.json['code'], request.json['name'])
         color.save()
 
         return self.response({
             'data': {
-                'order': request.json['order'],
-                'code': request.json['code'],
-                'name': request.json['name'],
+                'id'   : color.id,
+                'order': color.order,
+                'code' : color.code,
+                'name' : color.name,
             }
         })
 
     def edit(self, request, id):
-        return self.response({'msg': 'edit color'})
+        if request.method != 'PUT':
+            return self.response({'msg': 'edit color called from other than PUT'})
+
+        if not request.json or not 'order' in request.json or not 'code' in request.json or not 'code' in request.json:
+            logging.error('[%s] request json: %s', __name__, request.json)
+            return self.response({'msg': 'edit color received unexpected params'})
+
+        color = ColorModel(id, request.json['order'], request.json['code'], request.json['name'])
+        color.save()
+
+        return self.response({
+            'data': {
+                'id'   : color.id,
+                'order': color.order,
+                'code' : color.code,
+                'name' : color.name,
+            }
+        })

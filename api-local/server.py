@@ -18,7 +18,7 @@ def color_create():
     color = ColorController()
     return color.create(request)
 
-@route('/color/<id:int>', method=['PUT', 'OPTIONS'])
+@route('/color/<id>', method=['PUT', 'OPTIONS'])
 def color_edit(id):
     color = ColorController()
     return color.edit(request, id)

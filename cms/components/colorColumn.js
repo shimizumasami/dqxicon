@@ -9,6 +9,8 @@ class ColorColumn extends react.Component {
     this.state = {
       isCreate: props.value.isCreate ?? false,
       isEditing: props.value.isCreate ?? false,
+      id: props.value.id,
+      order: props.value.order,
       code: Array(2).fill(props.value.code),
       name: Array(2).fill(props.value.name),
     }
@@ -31,25 +33,27 @@ class ColorColumn extends react.Component {
     code[0] = code[1]
     name[0] = name[1]
     this.setState({
+      isCreate: false,
       isEditing: false,
       code: code,
       name: name,
     })
 
     let method
-    let url;
+    let url
     let data = {
-      order: this.props.value.order,
+      order: this.state.order,
       code: code[1],
       name: name[1],
     }
     if (this.state.isCreate) {
+      console.log('post create')
       method = 'post'
       url = process.env.apiEndpointOuter + '/color'
     } else {
+      console.log('put edit: ' + this.state.id)
       method = 'put'
-      data['id'] = this.props.value.id
-      url = process.env.apiEndpointOuter + '/color/' + data.id
+      url = process.env.apiEndpointOuter + '/color/' + this.state.id
     }
     axios({
       method: method,
@@ -58,6 +62,12 @@ class ColorColumn extends react.Component {
     })
       .then(res => {
         console.log(res.data)
+        this.setState({
+          id: res.data.data.id,
+          order: res.data.data.order,
+          code: Array(2).fill(res.data.data.code),
+          name: Array(2).fill(res.data.data.name),
+        })
       })
       .catch(res => {
         console.log(res.data)
@@ -91,7 +101,7 @@ class ColorColumn extends react.Component {
    * 追加をキャンセル.
    */
   cancelCreate() {
-    this.props.onRemove(this.props.value.id)
+    this.props.onRemove(this.state.id)
   }
   /**
    * 編集をキャンセル.
@@ -111,7 +121,7 @@ class ColorColumn extends react.Component {
   render() {
     return (
       <tr>
-        <td>{this.props.value.order}</td>
+        <td>{this.state.order}</td>
         <td><ColorEditor color={this.state.code[1]}/></td>
         <td>
           {
