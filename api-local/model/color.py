@@ -20,16 +20,10 @@ class ColorModel(Model):
                 KeySchema=[{
                     'AttributeName': 'id',
                     'KeyType': 'HASH',
-                }, {
-                    'AttributeName': 'order',
-                    'KeyType': 'RANGE',
                 }],
                 AttributeDefinitions=[{
                     'AttributeName': 'id',
                     'AttributeType': 'S',
-                }, {
-                    'AttributeName': 'order',
-                    'AttributeType': 'N',
                 }],
                 ProvisionedThroughput={
                     'ReadCapacityUnits': 1,
@@ -58,9 +52,9 @@ class ColorModel(Model):
                 TableName='Colors',
                 Key={
                     'id'   : {'S': self.id},
-                    'order': {'N': str(self.order)},
                 },
                 AttributeUpdates={
+                    'order': {'Value': {'N': str(self.order)}},
                     'code' : {'Value': {'S': self.code}},
                     'name' : {'Value': {'S': self.name}},
                 }

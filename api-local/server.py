@@ -26,12 +26,12 @@ def color_edit(id):
 
 @get('/skin')
 def skin_index():
-    skin = Skin()
+    skin = SkinController()
     return skin.index()
 
 @get('/eye')
 def eye_index():
-    eye = Eye()
+    eye = EyeController()
     return eye.index()
 
 def main():
@@ -39,8 +39,8 @@ def main():
     now = datetime.now(jst)
     log_folder = ('storage/log/')
     log_file = now.strftime('access_%Y%m%d.log')
-
     os.makedirs(log_folder, exist_ok=True)
+
     logger = logging.getLogger(__name__)
     logging.basicConfig(filename=log_folder + log_file, encoding='utf-8', level=logging.DEBUG)
 
