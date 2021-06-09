@@ -1,8 +1,9 @@
 from bottle import run, get, post, route, response, request
-import json
 from controller.color import ColorController
 from controller.skin import SkinController
 from controller.eye import EyeController
+from datetime import datetime, timedelta, timezone
+import logging, os, json
 
 @get('/')
 def hello():
@@ -33,4 +34,20 @@ def eye_index():
     eye = Eye()
     return eye.index()
 
-run(host='0.0.0.0', port=3001, debug=True, reloader=True)
+def main():
+    jst = timezone(timedelta(hours=+9), 'JST')
+    now = datetime.now(jst)
+    log_folder = ('storage/log/')
+    log_file = now.strftime('access_%Y%m%d.log')
+
+    os.makedirs(log_folder, exist_ok=True)
+    logger = logging.getLogger(__name__)
+    logging.basicConfig(filename=log_folder + log_file, encoding='utf-8', level=logging.DEBUG)
+
+    for name in ['boto3', 'botocore', 'urllib3']:
+        logging.getLogger(name).setLevel(logging.WARNING)
+
+    run(host='0.0.0.0', port=3001, debug=True, reloader=True)
+
+if __name__ == '__main__':
+    main()

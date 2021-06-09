@@ -1,18 +1,11 @@
 from bottle import HTTPResponse
 from datetime import datetime, timedelta, timezone
-import logging, inspect, os, json
+import logging, inspect, json
 
 class Controller:
     def __init__(self):
         self.called = inspect.stack()[1].function
         self.jst = timezone(timedelta(hours=+9), 'JST')
-        now = datetime.now(self.jst)
-        log_folder = ('storage/log/')
-        log_file = now.strftime('access_%Y%m%d.log')
-
-        os.makedirs(log_folder, exist_ok=True)
-        logger = logging.getLogger(__name__)
-        logging.basicConfig(filename=log_folder + log_file, encoding='utf-8', level=logging.DEBUG)
 
         logging.info('[%s START] %s', self.called, datetime.now(self.jst))
 
