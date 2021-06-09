@@ -18,11 +18,10 @@ class Color extends react.Component {
    */
   handleCreate() {
     const colors = this.state.colors.slice()
-    const ids = colors.map(data => {return data.id})
     const orders = colors.map(data => {return data.order})
     colors.push({
-      id: Math.max(...ids) + 1,
-      order: Math.max(...orders) + 1,
+      id: Math.random().toString(32).substring(2),
+      order: orders.length > 0 ? Math.max(...orders) + 1 : 1,
       name: '新しい色',
       code: '#000000',
       isCreate: true,

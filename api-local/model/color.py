@@ -1,20 +1,21 @@
 from model.base import Model
+from util.dynamodb import DynamoDB
 import boto3, logging
 
 class ColorModel(Model):
-    def __init__(self, id, order, code, name):
+    def __init__(self, id:str=None, order:int=None, code:str=None, name:str=None):
         self.id = id
         self.order = order
         self.code = code
         self.name = name
 
-        self.dynamodb = self.get_dynamodb()
+        dynamodb = DynamoDB.get_dynamodb()
 
         # テーブル定義がなければ作成する
-        tables = self.dynamodb.list_tables()
+        tables = dynamodb.list_tables()
         if 'TableNames' in tables and 'Colors' not in tables['TableNames']:
             logging.info('[%s] create table Colors')
-            table = self.dynamodb.create_table(
+            table = dynamodb.create_table(
                 TableName='Colors',
                 KeySchema=[{
                     'AttributeName': 'id',
@@ -37,10 +38,12 @@ class ColorModel(Model):
             )
 
     def save(self):
+        dynamodb = DynamoDB.get_dynamodb()
+
         if self.id is None:
             # 新規作成
             self.id = self.create_id()
-            return self.dynamodb.put_item(
+            return dynamodb.put_item(
                 TableName='Colors',
                 Item={
                     'id'   : {'S': self.id},
@@ -51,7 +54,7 @@ class ColorModel(Model):
             )
         else:
             # 編集
-            return self.dynamodb.update_item(
+            return dynamodb.update_item(
                 TableName='Colors',
                 Key={
                     'id'   : {'S': self.id},
@@ -62,3 +65,11 @@ class ColorModel(Model):
                     'name' : {'Value': {'S': self.name}},
                 }
             )
+
+    def all(self):
+        dynamodb = DynamoDB.get_dynamodb()
+        scan_data = dynamodb.scan(
+            TableName='Colors'
+        )
+        scan_array = DynamoDB.convert_scan_to_array(scan_data)
+        return sorted(scan_array, key=lambda x: x['order'])
