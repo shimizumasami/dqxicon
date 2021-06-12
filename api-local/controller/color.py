@@ -38,7 +38,7 @@ class ColorController(Controller):
             }
         })
 
-    def edit(self, request, id):
+    def edit(self, request, id: str):
         if request.method != 'PUT':
             return self.response({
                 'msg': 'edit color called from other than PUT'
@@ -65,4 +65,13 @@ class ColorController(Controller):
                 'code' : color.code,
                 'name' : color.name,
             }
+        })
+
+    def delete(self, id: str):
+        color = ColorModel(id=id)
+        color.delete()
+
+        return self.response({
+            'msg': 'delete color called',
+            'id' : id,
         })

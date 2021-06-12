@@ -15,7 +15,7 @@ type State = {
 }
 
 class ColorPage extends react.Component<Props, State> {
-  constructor(props) {
+  constructor(props: Props) {
     super(props)
     this.state = {
       colors: props.colors
@@ -41,9 +41,9 @@ class ColorPage extends react.Component<Props, State> {
    * 削除処理.
    * @param id 削除対象のID
    */
-  handleRemove(id) {
-    const colors = this.state.colors.slice()
-    colors.some((data, index) => {
+  handleRemove(id: string) {
+    const colors: Color[] = this.state.colors.slice()
+    colors.some((data: Color, index: number) => {
       if (data.id === id) {
         colors.splice(index, 1)
       }
@@ -68,7 +68,7 @@ class ColorPage extends react.Component<Props, State> {
               <ColorColumn
                 key={value.id}
                 value={value}
-                onRemove={(id) => {this.handleRemove(id)}}
+                onRemove={(id: string) => {this.handleRemove(id)}}
               />
             ))}
           </tbody>

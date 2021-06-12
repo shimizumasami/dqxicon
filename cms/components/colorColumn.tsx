@@ -98,7 +98,17 @@ class ColorColumn extends react.Component<Props, State> {
    * 削除処理.
    */
   handleRemove() {
-    this.props.onRemove(this.state.id)
+    axios({
+      method: 'delete',
+      url: process.env.apiEndpointOuter + '/color/' + this.state.id,
+    })
+      .then(res => {
+        console.log(res.data)
+        this.props.onRemove(this.state.id)
+      })
+      .catch(res => {
+        console.log(res.data)
+      })
   }
 
   /**

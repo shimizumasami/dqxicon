@@ -67,3 +67,11 @@ class ColorModel(Model):
         )
         scan_array = DynamoDB.convert_scan_to_array(scan_data)
         return sorted(scan_array, key=lambda x: x['order'])
+
+    def delete(self):
+        dynamodb = DynamoDB.get_dynamodb()
+        return dynamodb.delete_item(
+            TableName='Colors',
+            Key={
+                'id': {'S': self.id}
+            })

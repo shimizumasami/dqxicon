@@ -20,9 +20,14 @@ def color_create():
     return color.create(request)
 
 @route('/color/<id>', method=['PUT', 'OPTIONS'])
-def color_edit(id):
+def color_edit(id: str):
     color = ColorController()
     return color.edit(request, id)
+
+@route('/color/<id>', method=['DELETE'])
+def color_delete(id: str):
+    color = ColorController()
+    return color.delete(id)
 
 @get('/skin')
 def skin_index():
