@@ -5,13 +5,25 @@ import ColorColumn from '../components/colorColumn'
 import { Color } from '../interfaces/color'
 import styles from '../styles/Main.module.scss'
 import React, { useState } from 'react'
+import useSWR from 'swr'
 
 type Props = {
-  colors: Color[],  
+  colors: Color[]
+}
+
+const fetcher = (url) => fetch(url).then((res) => res.json())
+
+export async function getServerSideProps() {
+  const data = await fetcher(process.env.apiEndpointInner + '/color')
+  return { props: { colors: data } }
 }
 
 const ColorPage = (props: Props) => {
-  const [colors, setColors] = useState(props.colors)
+  const {data, error} = useSWR(process.env.apiEndpointOuter + '/color', fetcher, {initialData: props.colors})
+  const [colors, setColors] = useState(data)
+
+  if (error) return <div>failed to load</div>
+  if (!data) return <div>loading...</div>
 
   /**
    * 追加処理.
@@ -66,23 +78,6 @@ const ColorPage = (props: Props) => {
       </table>
     </App>
   )
-}
-
-export async function getStaticProps() {
-  const res = await fetch(process.env.apiEndpointInner + '/color')
-  const data = await res.json()
-
-  if (!data) {
-    return {
-      notFound: true,
-    }
-  }
-
-  return {
-    props: {
-      colors: data
-    },
-  }
 }
 
 export default ColorPage

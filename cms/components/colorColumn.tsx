@@ -43,6 +43,7 @@ class ColorColumn extends react.Component<Props, State> {
    * 保存処理.
    */
   handleSave() {
+    console.log('[START] save progress')
     const code = this.state.code.slice()
     const name = this.state.name.slice()
     code[0] = code[1]
@@ -83,6 +84,7 @@ class ColorColumn extends react.Component<Props, State> {
           code: Array(2).fill(res.data.data.code),
           name: Array(2).fill(res.data.data.name),
         })
+        console.log('[END] save progress')
       })
       .catch(res => {
         console.log(res.data)
