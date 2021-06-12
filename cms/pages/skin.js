@@ -10,7 +10,7 @@ function Skin({skins}) {
       <Title name="はだ色" />
       <table className={styles.table}>
         <TableHead
-          src={['Order', 'Color', 'Color code', 'Action']}
+          heads={['Order', 'Color', 'Color code', 'Action']}
         />
         <tbody>
           {skins.map((value) => (

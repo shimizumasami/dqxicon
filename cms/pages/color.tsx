@@ -2,10 +2,19 @@ import App from '../components/app'
 import Title from '../components/title'
 import TableHead from '../components/tableHead'
 import ColorColumn from '../components/colorColumn'
+import { Color } from '../interfaces/color'
 import styles from '../styles/Main.module.scss'
 import react from 'react'
 
-class Color extends react.Component {
+type Props = {
+  colors: Color[],  
+}
+
+type State = {
+  colors: Color[],
+}
+
+class ColorPage extends react.Component<Props, State> {
   constructor(props) {
     super(props)
     this.state = {
@@ -52,13 +61,13 @@ class Color extends react.Component {
 
         <table className={styles.table}>
           <TableHead
-            src={['Order', 'Color', 'Color code', 'Name', 'Action']}
+            heads={['Order', 'Color', 'Color code', 'Name', 'Action']}
           />
           <tbody>
             {this.state.colors.map((value) => (
               <ColorColumn
-                value={value}
                 key={value.id}
+                value={value}
                 onRemove={(id) => {this.handleRemove(id)}}
               />
             ))}
@@ -69,7 +78,7 @@ class Color extends react.Component {
   }
 }
 
-export async function getStaticProps(context) {
+export async function getStaticProps() {
   const res = await fetch(process.env.apiEndpointInner + '/color')
   const data = await res.json()
 
@@ -86,4 +95,4 @@ export async function getStaticProps(context) {
   }
 }
 
-export default Color
+export default ColorPage

@@ -1,8 +1,20 @@
-import ColorEditor from '../components/colorEditor'
-import ActionButtons from '../components/actionButtons'
+import ColorEditor from './colorEditor'
+import ActionButtons from './actionButtons'
 import react from "react"
 
-class SkinColumn extends react.Component {
+type Props = {
+  value: {
+    order: number,
+    code: string,
+    name: string,
+  }
+}
+
+type State = {
+  isEditing: boolean,
+}
+
+class SkinColumn extends react.Component<Props, State> {
   constructor(props) {
     super(props)
     this.state = {

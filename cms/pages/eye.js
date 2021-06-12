@@ -12,7 +12,7 @@ function Eye({eyes}) {
       <Title name="め" />
       <table className={styles.table}>
         <TableHead
-          src={['Order', 'Image', 'Image line', 'Image mask', 'Action']}
+          heads={['Order', 'Image', 'Image line', 'Image mask', 'Action']}
         />
         <tbody>
           {eyes.map((value) => (

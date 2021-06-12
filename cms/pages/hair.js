@@ -11,7 +11,7 @@ export default function Hair() {
       />
       <table className={styles.table}>
         <TableHead
-          src={['Order', 'Image front line', 'Image front mask', 'Image back line', 'Image back mask', 'Image twotone mask', 'Action']}
+          heads={['Order', 'Image front line', 'Image front mask', 'Image back line', 'Image back mask', 'Image twotone mask', 'Action']}
         />
       </table>
     </App>

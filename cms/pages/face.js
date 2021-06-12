@@ -13,7 +13,7 @@ export default function Face() {
       />
       <table className={styles.table}>
         <TableHead
-          src={['Image', 'Image line', 'Image mask']}
+          heads={['Image', 'Image line', 'Image mask']}
         />
         <tbody>
           <tr>

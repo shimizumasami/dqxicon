@@ -1,9 +1,24 @@
-import ColorEditor from '../components/colorEditor'
-import ActionButtons from '../components/actionButtons'
+import ColorEditor from './colorEditor'
+import ActionButtons from './actionButtons'
+import { Color } from '../interfaces/color'
 import react from 'react'
 import axios from 'axios'
 
-class ColorColumn extends react.Component {
+type Props = {
+  value: Color,
+  onRemove: (event: any) => void,
+}
+
+type State = {
+  isCreate: boolean,
+  isEditing: boolean,
+  id: string,
+  order: number,
+  code: string[],
+  name: string[],
+}
+
+class ColorColumn extends react.Component<Props, State> {
   constructor(props) {
     super(props)
     this.state = {
