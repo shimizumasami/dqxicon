@@ -94,6 +94,12 @@ class ColorColumn extends react.Component<Props, State> {
   handleCancel() {
     this.state.isCreate ? this.cancelCreate() : this.cancelEdit()
   }
+  /**
+   * 削除処理.
+   */
+  handleRemove() {
+    this.props.onRemove(this.state.id)
+  }
 
   /**
    * コード入力欄変更時の表示同期.
@@ -157,6 +163,7 @@ class ColorColumn extends react.Component<Props, State> {
             onEdit={() => {this.handleEdit()}}
             onSave={() => {this.handleSave()}}
             onCancel={() => {this.handleCancel()}}
+            onRemove={() => {this.handleRemove()}}
             isEditing={this.state.isEditing}
           />
         </td>

@@ -1,6 +1,7 @@
 import EditButton from './editButton'
 import SaveButton from './saveButton'
 import CancelButton from './cancelButton'
+import RemoveButton from './RemoveButton'
 import Image from 'next/image'
 import styles from '../styles/ActionButtons.module.scss'
 
@@ -10,6 +11,7 @@ type Props = {
   onEdit: () => void,
   onSave: () => void,
   onCancel: () => void,
+  onRemove: () => void,
 }
 
 const ActionButtons = (props: Props) => {
@@ -32,7 +34,7 @@ const ActionButtons = (props: Props) => {
       {editButton}
       <button type="button" className={styles.up}><Image src="/icon_up.svg" alt="up" width={14} height={14}/></button>
       <button type="button" className={styles.down}><Image src="/icon_down.svg" alt="down" width={14} height={14}/></button>
-      <button type="button" className={styles.trash}><Image src="/icon_trash.svg" alt="move to trash" width={14} height={14}/></button>
+      <RemoveButton onRemove={() => props.onRemove()} />
     </div>
   )
 }
