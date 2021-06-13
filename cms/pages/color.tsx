@@ -20,7 +20,7 @@ export async function getServerSideProps() {
 
 const ColorPage = (props: Props) => {
   const {data, error} = useSWR(process.env.apiEndpointOuter + '/color', fetcher, {initialData: props.colors})
-  const [colors, setColors] = useState(data)
+  const [colors, setColors] = useState<Color[]>(data)
 
   if (error) return <div>failed to load</div>
   if (!data) return <div>loading...</div>

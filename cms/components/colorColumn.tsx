@@ -1,7 +1,7 @@
 import ColorEditor from './colorEditor'
 import ActionButtons from './actionButtons'
 import { Color } from '../interfaces/color'
-import react from 'react'
+import { useState } from 'react'
 import axios from 'axios'
 
 type Props = {
@@ -9,81 +9,49 @@ type Props = {
   onRemove: (event: any) => void,
 }
 
-type State = {
-  isCreate: boolean,
-  isEditing: boolean,
-  id: string,
-  order: number,
-  code: string[],
-  name: string[],
-}
-
-class ColorColumn extends react.Component<Props, State> {
-  constructor(props) {
-    super(props)
-    this.state = {
-      isCreate: props.value.isCreate ?? false,
-      isEditing: props.value.isCreate ?? false,
-      id: props.value.id,
-      order: props.value.order,
-      code: Array(2).fill(props.value.code),
-      name: Array(2).fill(props.value.name),
-    }
-    this.handleChangeCode = this.handleChangeCode.bind(this)
-    this.handleChangeName = this.handleChangeName.bind(this)
-  }
+const ColorColumn = (props: Props) => {
+  const [isCreate, setIsCreate] = useState<boolean>(props.value.isCreate ?? false)
+  const [isEditing, setIsEditing] = useState<boolean>(props.value.isCreate ?? false)
+  const [id, setId] = useState<string>(props.value.id)
+  const [order, setOrder] = useState<number>(props.value.order)
+  const [codes, setCodes] = useState<string[]>(Array(2).fill(props.value.code))
+  const [names, setNames] = useState<string[]>(Array(2).fill(props.value.name))
 
   /**
    * 編集開始処理.
    */
-  handleEdit() {
-    this.setState({isEditing: true})
+  const handleEdit = () => {
+    setIsEditing(true)
   }
   /**
    * 保存処理.
    */
-  handleSave() {
+  const handleSave = () => {
     console.log('[START] save progress')
-    const code = this.state.code.slice()
-    const name = this.state.name.slice()
-    code[0] = code[1]
-    name[0] = name[1]
-    this.setState({
-      isCreate: false,
-      isEditing: false,
-      code: code,
-      name: name,
-    })
+    const codes_update = codes.slice()
+    const names_update = names.slice()
+    codes_update[0] = codes_update[1]
+    names_update[0] = names_update[1]
+    setIsCreate(false)
+    setIsEditing(false)
+    setCodes(codes_update)
+    setNames(names_update)
 
-    let method
-    let url
-    let data = {
-      order: this.state.order,
-      code: code[1],
-      name: name[1],
-    }
-    if (this.state.isCreate) {
-      console.log('post create')
-      method = 'post'
-      url = process.env.apiEndpointOuter + '/color'
-    } else {
-      console.log('put edit: ' + this.state.id)
-      method = 'put'
-      url = process.env.apiEndpointOuter + '/color/' + this.state.id
-    }
     axios({
-      method: method,
-      url: url,
-      data: data
+      method: isCreate ? 'POST' : 'PUT',
+      url: process.env.apiEndpointOuter + (isCreate ? '/color' : '/color/' + id),
+      data: {
+        order: order,
+        code: codes[1],
+        name: names[1],
+      }
     })
       .then(res => {
         console.log(res.data)
-        this.setState({
-          id: res.data.data.id,
-          order: res.data.data.order,
-          code: Array(2).fill(res.data.data.code),
-          name: Array(2).fill(res.data.data.name),
-        })
+        setId(res.data.data.id)
+        setOrder(res.data.data.order)
+        setCodes(Array(2).fill(res.data.data.code))
+        setNames(Array(2).fill(res.data.data.name))
         console.log('[END] save progress')
       })
       .catch(res => {
@@ -93,20 +61,20 @@ class ColorColumn extends react.Component<Props, State> {
   /**
    * キャンセル処理.
    */
-  handleCancel() {
-    this.state.isCreate ? this.cancelCreate() : this.cancelEdit()
+  const handleCancel = () => {
+    isCreate ? cancelCreate() : cancelEdit()
   }
   /**
    * 削除処理.
    */
-  handleRemove() {
+  const handleRemove = () => {
     axios({
-      method: 'delete',
-      url: process.env.apiEndpointOuter + '/color/' + this.state.id,
+      method: 'DELETE',
+      url: process.env.apiEndpointOuter + '/color/' + id,
     })
       .then(res => {
         console.log(res.data)
-        this.props.onRemove(this.state.id)
+        props.onRemove(id)
       })
       .catch(res => {
         console.log(res.data)
@@ -116,72 +84,68 @@ class ColorColumn extends react.Component<Props, State> {
   /**
    * コード入力欄変更時の表示同期.
    */
-   handleChangeCode(event) {
-    const code = this.state.code.slice()
-    code[1] = event.target.value
-    this.setState({code: code})
+  const handleChangeCode = (event) => {
+    const codes_update = codes.slice()
+    codes_update[1] = event.target.value
+    setCodes(codes_update)
   }
   /**
    * 名前入力欄変更時の表示同期.
    */
-  handleChangeName(event) {
-    const name = this.state.name.slice()
-    name[1] = event.target.value
-    this.setState({name: name})
+  const handleChangeName = (event) => {
+    const names_update = names.slice()
+    names_update[1] = event.target.value
+    setNames(names_update)
   }
 
   /**
    * 追加をキャンセル.
    */
-  cancelCreate() {
-    this.props.onRemove(this.state.id)
+  const cancelCreate = () => {
+    props.onRemove(id)
   }
   /**
    * 編集をキャンセル.
    */
-  cancelEdit() {
-    const code = this.state.code.slice()
-    const name = this.state.name.slice()
-    code[1] = code[0]
-    name[1] = name[0]
-    this.setState({
-      isEditing: false,
-      code: code,
-      name: name,
-    })
+  const cancelEdit = () => {
+    const codes_update = codes.slice()
+    const names_update = names.slice()
+    codes_update[1] = codes_update[0]
+    names_update[1] = names_update[0]
+    setIsEditing(false)
+    setCodes(codes_update)
+    setNames(names_update)
   }
 
-  render() {
-    return (
-      <tr>
-        <td>{this.state.order}</td>
-        <td><ColorEditor color={this.state.code[1]}/></td>
-        <td>
-          {
-            this.state.isEditing ? 
-            <input type="text" value={this.state.code[1]} onChange={this.handleChangeCode} /> :
-            this.state.code[0]
-          }
-        </td>
-        <td>
-          {
-            this.state.isEditing ?
-            <input type="text" value={this.state.name[1]} onChange={this.handleChangeName} /> :
-            this.state.name[0]
-          }
-        </td>
-        <td>
-          <ActionButtons
-            onEdit={() => {this.handleEdit()}}
-            onSave={() => {this.handleSave()}}
-            onCancel={() => {this.handleCancel()}}
-            onRemove={() => {this.handleRemove()}}
-            isEditing={this.state.isEditing}
-          />
-        </td>
-      </tr>
-    )
-  }
+  return (
+    <tr>
+      <td>{order}</td>
+      <td><ColorEditor color={codes[1]}/></td>
+      <td>
+        {
+          isEditing ? 
+          <input type="text" value={codes[1]} onChange={handleChangeCode} /> :
+          codes[0]
+        }
+      </td>
+      <td>
+        {
+          isEditing ?
+          <input type="text" value={names[1]} onChange={handleChangeName} /> :
+          names[0]
+        }
+      </td>
+      <td>
+        <ActionButtons
+          onEdit={() => {handleEdit()}}
+          onSave={() => {handleSave()}}
+          onCancel={() => {handleCancel()}}
+          onRemove={() => {handleRemove()}}
+          isEditing={isEditing}
+        />
+      </td>
+    </tr>
+  )
 }
 
 export default ColorColumn
