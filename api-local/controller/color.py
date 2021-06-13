@@ -15,7 +15,7 @@ class ColorController(Controller):
                 'msg': 'create color called from other than POST'
             })
 
-        if not request.json or not 'order' in request.json or not 'code' in request.json or not 'code' in request.json:
+        if not request.json or not 'order' in request.json or not 'code' in request.json or not 'name' in request.json:
             logging.error('[%s] request json: %s', __name__, request.json)
             return self.response({
                 'msg': 'create color received unexpected params'
@@ -44,7 +44,7 @@ class ColorController(Controller):
                 'msg': 'edit color called from other than PUT'
             })
 
-        if not request.json or not 'order' in request.json or not 'code' in request.json or not 'code' in request.json:
+        if not request.json or not 'order' in request.json or not 'code' in request.json or not 'name' in request.json:
             logging.error('[%s] request json: %s', __name__, request.json)
             return self.response({
                 'msg': 'edit color received unexpected params'

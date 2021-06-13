@@ -7,10 +7,12 @@ class Controller:
         self.called = inspect.stack()[1].function
         self.jst = timezone(timedelta(hours=+9), 'JST')
 
-        logging.info('[%s START] %s', self.called, datetime.now(self.jst))
+        log = logging.getLogger('access')
+        log.info('[%s START] %s', self.called, datetime.now(self.jst))
 
     def __del__(self):
-        logging.info('[%s END] %s', self.called, datetime.now(self.jst))
+        log = logging.getLogger('access')
+        log.info('[%s END] %s', self.called, datetime.now(self.jst))
 
     def response(self, data):
         res = HTTPResponse(status=200, body=json.dumps(data))
