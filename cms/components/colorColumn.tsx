@@ -1,5 +1,6 @@
 import ColorEditor from './colorEditor'
 import ActionButtons from './actionButtons'
+import ProgressButton from './progressButton'
 import { Color } from '../interfaces/color'
 import { useState } from 'react'
 import axios from 'axios'
@@ -12,6 +13,7 @@ type Props = {
 const ColorColumn = (props: Props) => {
   const [isCreate, setIsCreate] = useState<boolean>(props.value.isCreate ?? false)
   const [isEditing, setIsEditing] = useState<boolean>(props.value.isCreate ?? false)
+  const [inProgress, setInProgress] = useState<boolean>(false)
   const [id, setId] = useState<string>(props.value.id)
   const [order, setOrder] = useState<number>(props.value.order)
   const [codes, setCodes] = useState<string[]>(Array(2).fill(props.value.code))
@@ -27,15 +29,8 @@ const ColorColumn = (props: Props) => {
    * 保存処理.
    */
   const handleSave = () => {
-    console.log('[START] save progress')
-    const codes_update = codes.slice()
-    const names_update = names.slice()
-    codes_update[0] = codes_update[1]
-    names_update[0] = names_update[1]
-    setIsCreate(false)
-    setIsEditing(false)
-    setCodes(codes_update)
-    setNames(names_update)
+    console.log('[START] save color')
+    setInProgress(true)
 
     axios({
       method: isCreate ? 'POST' : 'PUT',
@@ -48,14 +43,19 @@ const ColorColumn = (props: Props) => {
     })
       .then(res => {
         console.log(res.data)
+        setIsCreate(false)
+        setIsEditing(false)
         setId(res.data.data.id)
         setOrder(res.data.data.order)
         setCodes(Array(2).fill(res.data.data.code))
         setNames(Array(2).fill(res.data.data.name))
-        console.log('[END] save progress')
       })
       .catch(res => {
         console.log(res.data)
+      })
+      .finally(() => {
+        setInProgress(false)
+        console.log('[END] save color')
       })
   }
   /**
@@ -68,6 +68,8 @@ const ColorColumn = (props: Props) => {
    * 削除処理.
    */
   const handleRemove = () => {
+    console.log('[START] remove color')
+    setInProgress(true)
     axios({
       method: 'DELETE',
       url: process.env.apiEndpointOuter + '/color/' + id,
@@ -78,6 +80,10 @@ const ColorColumn = (props: Props) => {
       })
       .catch(res => {
         console.log(res.data)
+      })
+      .finally(() => {
+        setInProgress(false)
+        console.log('[END] remove color')
       })
   }
 
@@ -123,26 +129,30 @@ const ColorColumn = (props: Props) => {
       <td><ColorEditor color={codes[1]}/></td>
       <td>
         {
-          isEditing ? 
-          <input type="text" value={codes[1]} onChange={handleChangeCode} /> :
-          codes[0]
+          isEditing
+          ? <input type="text" value={codes[1]} onChange={handleChangeCode} />
+          : codes[0]
         }
       </td>
       <td>
         {
-          isEditing ?
-          <input type="text" value={names[1]} onChange={handleChangeName} /> :
-          names[0]
+          isEditing
+          ? <input type="text" value={names[1]} onChange={handleChangeName} />
+          : names[0]
         }
       </td>
       <td>
-        <ActionButtons
-          onEdit={() => {handleEdit()}}
-          onSave={() => {handleSave()}}
-          onCancel={() => {handleCancel()}}
-          onRemove={() => {handleRemove()}}
-          isEditing={isEditing}
-        />
+        {
+          inProgress
+          ? <ProgressButton />
+          : <ActionButtons
+              onEdit={() => {handleEdit()}}
+              onSave={() => {handleSave()}}
+              onCancel={() => {handleCancel()}}
+              onRemove={() => {handleRemove()}}
+              isEditing={isEditing}
+            />
+        }
       </td>
     </tr>
   )

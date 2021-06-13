@@ -10,7 +10,8 @@ button.save,
 button.cancel,
 button.up,
 button.down,
-button.trash {
+button.trash,
+button.progress {
   width: 34px;
   height: 34px;
   background-color: $support_color;
@@ -28,4 +29,105 @@ button.save {
 
 button.cancel {
   background-color: $danger_color;
+}
+
+button.progress .circle {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  background: $base_color;
+  border-radius: 50%;
+  text-align: center;
+  overflow: hidden;
+  z-index: 1;
+
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: -10px;
+    width: 20px;
+    height: 20px;
+    background: $support_color;
+    transform-origin: right 10px;
+    z-index: 2;
+    animation: rotate-circle-bottom 4s linear forwards infinite;
+  }
+
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 10px;
+    width: 20px;
+    height: 20px;
+    transform-origin: left 10px;
+    z-index: 3;
+    animation: rotate-circle-top 4s linear forwards infinite;
+  }
+
+  .circle_inner {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 14px;
+    height: 14px;
+    background: $support_color;
+    border-radius: 50%;
+    z-index: 4;
+  }
+}
+
+@keyframes rotate-circle-top {
+  0% {
+    transform: rotate(0deg);
+    background: $support_color;
+  }
+  25% {
+    transform: rotate(180deg);
+    background: $support_color;
+  }
+  25.01% {
+    transform: rotate(360deg);
+    background: $base_color;
+  }
+  50% {
+    transform: rotate(360deg);
+    background: $base_color;
+  }
+  50.01% {
+    transform: rotate(0deg);
+    background: $base_color;
+  }
+  75% {
+    transform: rotate(180deg);
+    background: $base_color;
+  }
+  75.01% {
+    transform: rotate(0deg);
+    background: $support_color;
+  }
+  100% {
+    transform: rotate(180deg);
+    background: $support_color;
+  }
+}
+@keyframes rotate-circle-bottom {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  75% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(180deg);
+  }
 }
