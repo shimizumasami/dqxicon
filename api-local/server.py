@@ -1,6 +1,7 @@
 from bottle import run, get, post, route, response, request
 from controller.color import ColorController
 from controller.skin import SkinController
+from controller.face import FaceController
 from controller.eye import EyeController
 from datetime import datetime, timedelta, timezone
 import logging, os, json
@@ -48,6 +49,11 @@ def skin_edit(id: str):
 def skin_delete(id: str):
     skin = SkinController()
     return skin.delete(id)
+
+@get('/face')
+def face_index():
+    face = FaceController()
+    return face.index()
 
 @get('/eye')
 def eye_index():
