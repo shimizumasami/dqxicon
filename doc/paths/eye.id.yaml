@@ -1,0 +1,34 @@
+put:
+  tags:
+    - Eye
+  summary: め編集
+  parameters:
+    - $ref: '../components/parameters/eye.id.yaml'
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../components/schemas/eye.yaml'
+  responses:
+    '200':
+      description: 編集しため
+      content:
+        application/json:
+          schema:
+            items:
+              $ref: '../components/schemas/eye.yaml'
+
+delete:
+  tags:
+    - Eye
+  summary: め削除
+  parameters:
+    - $ref: '../components/parameters/eye.id.yaml'
+  responses:
+    '200':
+      description: 削除しため
+      content:
+        application/json:
+          schema:
+            items:
+              $ref: '../components/schemas/eye.yaml'

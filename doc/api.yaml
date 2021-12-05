@@ -1,0 +1,58 @@
+openapi: 3.0.0
+
+info:
+  title: バックエンドAPI
+  description: 各情報を取得/操作するAPI
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:3001/
+    description: Local開発環境
+
+paths:
+  /color:
+    $ref: './paths/color.yaml'
+  /color/{id}:
+    $ref: './paths/color.id.yaml'
+  /skin:
+    $ref: './paths/skin.yaml'
+  /skin/{id}:
+    $ref: './paths/skin.id.yaml'
+  /face:
+    $ref: './paths/face.yaml'
+  /eye:
+    $ref: './paths/eye.yaml'
+  /eye/{id}:
+    $ref: './paths/eye.id.yaml'
+  /hair:
+    $ref: './paths/hair.yaml'
+  /hair/{id}:
+    $ref: './paths/hair.id.yaml'
+  /image:
+    $ref: './paths/image.yaml'
+  /image/{id}:
+    $ref: './paths/image.id.yaml'
+  /deploy:
+    $ref: './paths/deployment.yaml'
+
+tags:
+  - name: Color
+    description: いろ情報を操作するAPI
+  - name: Skin
+    description: はだいろ情報を操作するAPI
+  - name: Face
+    description: りんかく情報を操作するAPI
+  - name: Eye
+    description: め情報を操作するAPI
+  - name: Hair
+    description: かみがた情報を操作するAPI
+  - name: Image
+    description: 画像データを操作するAPI
+  - name: Deploy
+    description: デプロイAPI
+
+components:
+  parameters:
+    $ref: './components/parameters/index.yaml'
+  schemas:
+    $ref: './components/schemas/index.yaml'

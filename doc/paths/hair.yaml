@@ -1,0 +1,30 @@
+get:
+  tags:
+    - Hair
+  summary: かみがた一覧取得
+  responses:
+    '200':
+      description: かみがた一覧
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '../components/schemas/hair.yaml'
+post:
+  tags:
+    - Hair
+  summary: かみがた新規作成
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../components/schemas/hair.yaml'
+  responses:
+    '200':
+      description: 作成したかみがた
+      content:
+        application/json:
+          schema:
+            items:
+              $ref: '../components/schemas/hair.yaml'

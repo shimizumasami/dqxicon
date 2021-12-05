@@ -1,0 +1,16 @@
+type: object
+description: はだ色
+properties:
+  id:
+    type: string
+    example: 'hMZCbqP9dI'
+    description: はだ色ID
+    readOnly: true
+  order:
+    type: integer
+    description: 表示順序
+    example: 1
+  code:
+    type: string
+    description: カラーコード
+    example: '#ffffff'

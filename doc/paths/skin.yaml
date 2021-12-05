@@ -1,0 +1,31 @@
+get:
+  tags:
+    - Skin
+  summary: はだいろ一覧取得
+  responses:
+    '200':
+      description: はだ色一覧
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '../components/schemas/skin.yaml'
+post:
+  tags:
+    - Skin
+  summary: はだいろ新規作成
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../components/schemas/skin.yaml'
+  responses:
+    '200':
+      description: 作成したはだいろ
+      content:
+        application/json:
+          schema:
+            items:
+              $ref: '../components/schemas/skin.yaml'
+  

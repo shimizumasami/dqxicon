@@ -1,0 +1,20 @@
+type: object
+description: いろ
+properties:
+  id:
+    type: string
+    example: 'hMZCbqP9dI'
+    description: いろID
+    readOnly: true
+  order:
+    type: integer
+    description: 表示順序
+    example: 1
+  code:
+    type: string
+    description: カラーコード
+    example: '#ffffff'
+  name:
+    type: string
+    description: 名称
+    example: 'しろ'

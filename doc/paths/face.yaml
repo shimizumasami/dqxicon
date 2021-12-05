@@ -1,0 +1,30 @@
+get:
+  tags:
+    - Face
+  summary: りんかく取得
+  responses:
+    '200':
+      description: りんかく情報
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '../components/schemas/face.yaml'
+post:
+  tags:
+    - Face
+  summary: りんかく新規作成
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../components/schemas/face.yaml'
+  responses:
+    '200':
+      description: 作成したりんかく
+      content:
+        application/json:
+          schema:
+            items:
+              $ref: '../components/schemas/face.yaml'

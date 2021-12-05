@@ -1,0 +1,24 @@
+post:
+  tags:
+    - Image
+  summary: 画像アップロード
+  requestBody:
+    content:
+      image/png:
+        schema:
+          type: string
+          format: binary
+  responses:
+    '200':
+      description: 作成した画像情報
+      content:
+        application/json:
+          schema:
+            items:
+              type: object
+              description: 画像情報
+              properties:
+                id:
+                  type: string
+                  example: 'hMZCbqP9dI'
+                  description: 画像ID

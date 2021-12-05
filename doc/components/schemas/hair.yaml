@@ -1,0 +1,28 @@
+type: object
+description: かみがた
+properties:
+  id:
+    type: string
+    example: 'hMZCbqP9dI'
+    description: かみがたID
+    readOnly: true
+  order:
+    type: integer
+    description: 表示順序
+    example: 1
+  front_line_img_id:
+    type: string
+    example: 'hMZCbqP9dI'
+    description: 前髪線の画像ID
+  front_mask_img_id:
+    type: string
+    example: 'hMZCbqP9dI'
+    description: 前髪マスクの画像ID
+  back_line_img_id:
+    type: string
+    example: 'hMZCbqP9dI'
+    description: 後ろ髪線の画像ID
+  back_mask_img_id:
+    type: string
+    example: 'hMZCbqP9dI'
+    description: 後ろ髪マスクの画像ID

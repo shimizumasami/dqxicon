@@ -1,0 +1,7 @@
+name: id
+in: path
+description: めID
+required: true
+schema:
+  type: string
+  example: 'hMZCbqP9dI'

@@ -1,0 +1,34 @@
+put:
+  tags:
+    - Skin
+  summary: はだいろ編集
+  parameters:
+    - $ref: '../components/parameters/skin.id.yaml'
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../components/schemas/skin.yaml'
+  responses:
+    '200':
+      description: 編集したはだいろ
+      content:
+        application/json:
+          schema:
+            items:
+              $ref: '../components/schemas/skin.yaml'
+
+delete:
+  tags:
+    - Skin
+  summary: はだいろ削除
+  parameters:
+    - $ref: '../components/parameters/skin.id.yaml'
+  responses:
+    '200':
+      description: 削除したはだいろ
+      content:
+        application/json:
+          schema:
+            items:
+              $ref: '../components/schemas/skin.yaml'

@@ -1,0 +1,7 @@
+name: id
+in: path
+description: かみがたID
+required: true
+schema:
+  type: string
+  example: 'hMZCbqP9dI'

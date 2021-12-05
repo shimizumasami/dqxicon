@@ -1,0 +1,30 @@
+get:
+  tags:
+    - Eye
+  summary: め一覧取得
+  responses:
+    '200':
+      description: め一覧
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '../components/schemas/eye.yaml'
+post:
+  tags:
+    - Eye
+  summary: め新規作成
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../components/schemas/eye.yaml'
+  responses:
+    '200':
+      description: 作成しため
+      content:
+        application/json:
+          schema:
+            items:
+              $ref: '../components/schemas/eye.yaml'

@@ -1,0 +1,34 @@
+put:
+  tags:
+    - Hair
+  summary: かみがた編集
+  parameters:
+    - $ref: '../components/parameters/hair.id.yaml'
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../components/schemas/hair.yaml'
+  responses:
+    '200':
+      description: 編集したかみがた
+      content:
+        application/json:
+          schema:
+            items:
+              $ref: '../components/schemas/hair.yaml'
+
+delete:
+  tags:
+    - Hair
+  summary: かみがた削除
+  parameters:
+    - $ref: '../components/parameters/hair.id.yaml'
+  responses:
+    '200':
+      description: 削除したかみがた
+      content:
+        application/json:
+          schema:
+            items:
+              $ref: '../components/schemas/hair.yaml'

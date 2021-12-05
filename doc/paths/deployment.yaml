@@ -1,0 +1,20 @@
+put:
+  tags:
+    - Deploy
+  summary: デプロイ実行
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: string
+          enum: ['stg', 'prod']
+  responses:
+    '200':
+      description: デプロイ実行結果
+      content:
+        application/json:
+          schema:
+            items:
+              status:
+                type: string
+                enum: ['true', 'false']

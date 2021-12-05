@@ -1,0 +1,10 @@
+ColorId:
+  $ref: './color.id.yaml'
+SkinId:
+  name: id
+  in: path
+  description: はだ色ID
+  required: true
+  schema:
+    type: string
+    example: 'hMZCbqP9dI'

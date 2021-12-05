@@ -1,0 +1,16 @@
+type: object
+description: りんかく
+properties:
+  id:
+    type: string
+    example: 'hMZCbqP9dI'
+    description: りんかくID
+    readOnly: true
+  line_img_id:
+    type: string
+    example: 'hMZCbqP9dI'
+    description: りんかく線の画像ID
+  mask_img_id:
+    type: string
+    example: 'hMZCbqP9dI'
+    description: りんかくマスクの画像ID

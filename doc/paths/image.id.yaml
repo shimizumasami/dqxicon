@@ -1,0 +1,20 @@
+get:
+  tags:
+    - Image
+  summary: 画像取得
+  parameters:
+    name: id
+    in: path
+    description: 画像ID
+    required: true
+    schema:
+      type: string
+      example: 'hMZCbqP9dI'
+  responses:
+    '200':
+      description: 画像データ
+      content:
+        image/png:
+          schema:
+            type: string
+            formate: binary
