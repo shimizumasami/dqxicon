@@ -66,7 +66,7 @@ class Model:
         scan_array = DynamoDB.convert_scan_to_array(scan_data)
         return sorted(scan_array, key=lambda x: x['order'])
 
-    def delete_tem(self, key:dict):
+    def delete_item(self, key:dict):
         log = logging.getLogger('db')
         log.info('[%s.%s] %s', self.tableName, sys._getframe().f_code.co_name, datetime.now(self.jst))
 
