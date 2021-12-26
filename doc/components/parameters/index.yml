@@ -1,5 +1,5 @@
 ColorId:
-  $ref: './color.id.yaml'
+  $ref: './color.id.yml'
 SkinId:
   name: id
   in: path

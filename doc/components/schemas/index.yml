@@ -1,0 +1,10 @@
+Color:
+  $ref: './color.yml'
+Skin:
+  $ref: './skin.yml'
+Face:
+  $ref: './face.yml'
+Eye:
+  $ref: './eye.yml'
+Hair:
+  $ref: './hair.yml'

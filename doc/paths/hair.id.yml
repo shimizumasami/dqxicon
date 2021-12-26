@@ -3,12 +3,12 @@ put:
     - Hair
   summary: かみがた編集
   parameters:
-    - $ref: '../components/parameters/hair.id.yaml'
+    - $ref: '../components/parameters/hair.id.yml'
   requestBody:
     content:
       application/json:
         schema:
-          $ref: '../components/schemas/hair.yaml'
+          $ref: '../components/schemas/hair.yml'
   responses:
     '200':
       description: 編集したかみがた
@@ -16,14 +16,14 @@ put:
         application/json:
           schema:
             items:
-              $ref: '../components/schemas/hair.yaml'
+              $ref: '../components/schemas/hair.yml'
 
 delete:
   tags:
     - Hair
   summary: かみがた削除
   parameters:
-    - $ref: '../components/parameters/hair.id.yaml'
+    - $ref: '../components/parameters/hair.id.yml'
   responses:
     '200':
       description: 削除したかみがた
@@ -31,4 +31,4 @@ delete:
         application/json:
           schema:
             items:
-              $ref: '../components/schemas/hair.yaml'
+              $ref: '../components/schemas/hair.yml'

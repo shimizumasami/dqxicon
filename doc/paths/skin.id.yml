@@ -3,12 +3,12 @@ put:
     - Skin
   summary: はだいろ編集
   parameters:
-    - $ref: '../components/parameters/skin.id.yaml'
+    - $ref: '../components/parameters/skin.id.yml'
   requestBody:
     content:
       application/json:
         schema:
-          $ref: '../components/schemas/skin.yaml'
+          $ref: '../components/schemas/skin.yml'
   responses:
     '200':
       description: 編集したはだいろ
@@ -16,14 +16,14 @@ put:
         application/json:
           schema:
             items:
-              $ref: '../components/schemas/skin.yaml'
+              $ref: '../components/schemas/skin.yml'
 
 delete:
   tags:
     - Skin
   summary: はだいろ削除
   parameters:
-    - $ref: '../components/parameters/skin.id.yaml'
+    - $ref: '../components/parameters/skin.id.yml'
   responses:
     '200':
       description: 削除したはだいろ
@@ -31,4 +31,4 @@ delete:
         application/json:
           schema:
             items:
-              $ref: '../components/schemas/skin.yaml'
+              $ref: '../components/schemas/skin.yml'

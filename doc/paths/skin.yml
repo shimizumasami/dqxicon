@@ -10,7 +10,7 @@ get:
           schema:
             type: array
             items:
-              $ref: '../components/schemas/skin.yaml'
+              $ref: '../components/schemas/skin.yml'
 post:
   tags:
     - Skin
@@ -19,7 +19,7 @@ post:
     content:
       application/json:
         schema:
-          $ref: '../components/schemas/skin.yaml'
+          $ref: '../components/schemas/skin.yml'
   responses:
     '200':
       description: 作成したはだいろ
@@ -27,5 +27,5 @@ post:
         application/json:
           schema:
             items:
-              $ref: '../components/schemas/skin.yaml'
+              $ref: '../components/schemas/skin.yml'
   

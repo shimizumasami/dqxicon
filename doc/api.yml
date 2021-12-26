@@ -11,29 +11,29 @@ servers:
 
 paths:
   /color:
-    $ref: './paths/color.yaml'
+    $ref: './paths/color.yml'
   /color/{id}:
-    $ref: './paths/color.id.yaml'
+    $ref: './paths/color.id.yml'
   /skin:
-    $ref: './paths/skin.yaml'
+    $ref: './paths/skin.yml'
   /skin/{id}:
-    $ref: './paths/skin.id.yaml'
+    $ref: './paths/skin.id.yml'
   /face:
-    $ref: './paths/face.yaml'
+    $ref: './paths/face.yml'
   /eye:
-    $ref: './paths/eye.yaml'
+    $ref: './paths/eye.yml'
   /eye/{id}:
-    $ref: './paths/eye.id.yaml'
+    $ref: './paths/eye.id.yml'
   /hair:
-    $ref: './paths/hair.yaml'
+    $ref: './paths/hair.yml'
   /hair/{id}:
-    $ref: './paths/hair.id.yaml'
+    $ref: './paths/hair.id.yml'
   /image:
-    $ref: './paths/image.yaml'
+    $ref: './paths/image.yml'
   /image/{id}:
-    $ref: './paths/image.id.yaml'
+    $ref: './paths/image.id.yml'
   /deploy:
-    $ref: './paths/deployment.yaml'
+    $ref: './paths/deployment.yml'
 
 tags:
   - name: Color
@@ -53,6 +53,6 @@ tags:
 
 components:
   parameters:
-    $ref: './components/parameters/index.yaml'
+    $ref: './components/parameters/index.yml'
   schemas:
-    $ref: './components/schemas/index.yaml'
+    $ref: './components/schemas/index.yml'

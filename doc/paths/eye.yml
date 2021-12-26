@@ -10,7 +10,7 @@ get:
           schema:
             type: array
             items:
-              $ref: '../components/schemas/eye.yaml'
+              $ref: '../components/schemas/eye.yml'
 post:
   tags:
     - Eye
@@ -19,7 +19,7 @@ post:
     content:
       application/json:
         schema:
-          $ref: '../components/schemas/eye.yaml'
+          $ref: '../components/schemas/eye.yml'
   responses:
     '200':
       description: 作成しため
@@ -27,4 +27,4 @@ post:
         application/json:
           schema:
             items:
-              $ref: '../components/schemas/eye.yaml'
+              $ref: '../components/schemas/eye.yml'

@@ -9,7 +9,7 @@ https://xd.adobe.com/view/531bbdf1-d69d-4776-907c-18e818397f38-0648/grid
 - 以下のファイルをOpenAPIとしてプレビューしてください
 
 ```
-/doc/api.yaml
+/doc/api.yml
 ```
 
 # ローカル開発環境

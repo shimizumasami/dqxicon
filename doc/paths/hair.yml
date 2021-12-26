@@ -10,7 +10,7 @@ get:
           schema:
             type: array
             items:
-              $ref: '../components/schemas/hair.yaml'
+              $ref: '../components/schemas/hair.yml'
 post:
   tags:
     - Hair
@@ -19,7 +19,7 @@ post:
     content:
       application/json:
         schema:
-          $ref: '../components/schemas/hair.yaml'
+          $ref: '../components/schemas/hair.yml'
   responses:
     '200':
       description: 作成したかみがた
@@ -27,4 +27,4 @@ post:
         application/json:
           schema:
             items:
-              $ref: '../components/schemas/hair.yaml'
+              $ref: '../components/schemas/hair.yml'

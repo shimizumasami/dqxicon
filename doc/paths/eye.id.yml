@@ -3,12 +3,12 @@ put:
     - Eye
   summary: め編集
   parameters:
-    - $ref: '../components/parameters/eye.id.yaml'
+    - $ref: '../components/parameters/eye.id.yml'
   requestBody:
     content:
       application/json:
         schema:
-          $ref: '../components/schemas/eye.yaml'
+          $ref: '../components/schemas/eye.yml'
   responses:
     '200':
       description: 編集しため
@@ -16,14 +16,14 @@ put:
         application/json:
           schema:
             items:
-              $ref: '../components/schemas/eye.yaml'
+              $ref: '../components/schemas/eye.yml'
 
 delete:
   tags:
     - Eye
   summary: め削除
   parameters:
-    - $ref: '../components/parameters/eye.id.yaml'
+    - $ref: '../components/parameters/eye.id.yml'
   responses:
     '200':
       description: 削除しため
@@ -31,4 +31,4 @@ delete:
         application/json:
           schema:
             items:
-              $ref: '../components/schemas/eye.yaml'
+              $ref: '../components/schemas/eye.yml'

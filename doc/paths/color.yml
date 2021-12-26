@@ -10,7 +10,7 @@ get:
           schema:
             type: array
             items:
-              $ref: '../components/schemas/color.yaml'
+              $ref: '../components/schemas/color.yml'
 post:
   tags:
     - Color
@@ -19,7 +19,7 @@ post:
     content:
       application/json:
         schema:
-          $ref: '../components/schemas/color.yaml'
+          $ref: '../components/schemas/color.yml'
   responses:
     '200':
       description: 作成したいろ
@@ -27,4 +27,4 @@ post:
         application/json:
           schema:
             items:
-              $ref: '../components/schemas/color.yaml'
+              $ref: '../components/schemas/color.yml'

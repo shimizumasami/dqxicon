@@ -10,7 +10,7 @@ get:
           schema:
             type: array
             items:
-              $ref: '../components/schemas/face.yaml'
+              $ref: '../components/schemas/face.yml'
 post:
   tags:
     - Face
@@ -19,7 +19,7 @@ post:
     content:
       application/json:
         schema:
-          $ref: '../components/schemas/face.yaml'
+          $ref: '../components/schemas/face.yml'
   responses:
     '200':
       description: 作成したりんかく
@@ -27,4 +27,4 @@ post:
         application/json:
           schema:
             items:
-              $ref: '../components/schemas/face.yaml'
+              $ref: '../components/schemas/face.yml'
