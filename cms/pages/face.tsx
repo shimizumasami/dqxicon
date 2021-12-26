@@ -25,25 +25,12 @@ const FacePage = (props: Props) => {
 
   if (error) return <div>failed to load</div>
   if (!data) return <div>loading...</div>
-
-  /**
-   * 追加処理.
-   */
-   const handleCreate = () => {
-    const face_update = {
-      id: Math.random().toString(32).substring(2),
-      line: '/storage/face_line.png',
-      mask: '/storage/face_mask.png',
-      isCreate: true,
-    }
-    setFace(face_update)
-  }
   
   return (
     <App active="face">
       <Title
         name="りんかく"
-        onCreate={() => {handleCreate}}
+        useCreate={false}
       />
       <table className={styles.table}>
         <TableHead
