@@ -1,3 +1,4 @@
+import ImageViewer from '../components/imageViewer'
 import styles from '../styles/ImageEditor.module.scss'
 
 type Props = {
@@ -7,10 +8,9 @@ type Props = {
 
 const ImageEditor = (props: Props) => (
   <div className={styles.container}>
-    <img
-      src={props.src}
+    <ImageViewer
+      src={[props.src]}
       alt={props.alt}
-      className={styles.editor}
     />
     <div className={styles.cover}>
       <img src="/icon_edit.svg" className={styles.edit} />

@@ -20,12 +20,14 @@ export async function getServerSideProps() {
 }
 
 const FacePage = (props: Props) => {
+  {/* 初期データ取得 */}
   const {data, error} = useSWR(process.env.apiEndpointOuter + '/face', fetcher, {initialData: props.face})
   const [face, setFace] = useState<Face>(data)
 
+  {/* エラー表示 */}
   if (error) return <div>failed to load</div>
   if (!data) return <div>loading...</div>
-  
+
   return (
     <App active="face">
       <Title
