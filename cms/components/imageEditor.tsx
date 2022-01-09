@@ -12,9 +12,13 @@ const ImageEditor = (props: Props) => (
       src={[props.src]}
       alt={props.alt}
     />
-    <div className={styles.cover}>
-      <img src="/icon_edit.svg" className={styles.edit} />
-    </div>
+
+    <label htmlFor="file_input">
+      <div className={styles.cover}>
+        <img src="/icon_edit.svg" className={styles.edit} />
+      </div>
+      <input type="file" id="file_input" accept="image/png"></input>
+    </label>
   </div>
 )
 
