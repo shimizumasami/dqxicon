@@ -1,6 +1,5 @@
 import ColorEditor from './colorEditor'
 import ActionButtons from './actionButtons'
-import ProgressButton from './progressButton'
 import { Color } from '../interfaces/color'
 import { useState } from 'react'
 import axios from 'axios'
@@ -143,15 +142,14 @@ const ColorColumn = (props: Props) => {
       </td>
       <td>
         {
-          inProgress
-          ? <ProgressButton />
-          : <ActionButtons
-              onEdit={() => {handleEdit()}}
-              onSave={() => {handleSave()}}
-              onCancel={() => {handleCancel()}}
-              onRemove={() => {handleRemove()}}
-              isEditing={isEditing}
-            />
+          <ActionButtons
+            onEdit={() => {handleEdit()}}
+            onSave={() => {handleSave()}}
+            onCancel={() => {handleCancel()}}
+            onRemove={() => {handleRemove()}}
+            isEditing={isEditing}
+            inProgress={inProgress}
+          />
         }
       </td>
     </tr>
