@@ -1,12 +1,11 @@
 import App from '../components/app'
 import Title from '../components/title'
 import TableHead from '../components/tableHead'
-import ImageEditor from '../components/imageEditor'
-import ImageViewer from '../components/imageViewer'
 import { Face } from '../interfaces/face'
 import styles from '../styles/Main.module.scss'
 import { useState } from 'react'
 import useSWR from 'swr'
+import FaceColumn from '../components/faceColumn'
 
 type Props = {
   face: Face
@@ -36,29 +35,12 @@ const FacePage = (props: Props) => {
       />
       <table className={styles.table}>
         <TableHead
-          heads={['Image', 'Image line', 'Image mask']}
+          heads={['Image', 'Image line', 'Image mask', 'Action']}
         />
         <tbody>
-          <tr>
-            <td>
-              <ImageViewer
-                src={[face.mask, face.line]}
-                alt="りんかく"
-              />
-            </td>
-            <td>
-              <ImageEditor
-                src={face.line}
-                alt="りんかく 線"
-              />
-            </td>
-            <td>
-              <ImageEditor
-                src={face.mask}
-                alt="りんかく マスク"
-              />
-            </td>
-          </tr>
+          <FaceColumn
+            value={face}
+          />
         </tbody>
       </table>
     </App>
