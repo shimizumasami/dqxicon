@@ -4,6 +4,7 @@ import styles from '../styles/ImageEditor.module.scss'
 type Props = {
   src: string,
   alt: string,
+  onSelected: (event: any) => void,
 }
 
 const ImageEditor = (props: Props) => (
@@ -17,7 +18,12 @@ const ImageEditor = (props: Props) => (
       <div className={styles.cover}>
         <img src="/icon_edit.svg" className={styles.edit} />
       </div>
-      <input type="file" id="file_input" accept="image/png"></input>
+      <input
+        type="file"
+        id="file_input"
+        accept="image/png"
+        onChange={(file) => {props.onSelected(file)}}
+      ></input>
     </label>
   </div>
 )
